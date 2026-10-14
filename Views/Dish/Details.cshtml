@@ -1,0 +1,21 @@
+@model wt_lab4_4mvc_savostikova.Models.Dish
+
+<div class="container py-4">
+    <div class="card shadow-sm rounded-4">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+                <h1>@Model.Name</h1>
+                <span class="badge bg-secondary">ID: @Model.Id</span>
+            </div>
+            <p class="text-muted">Категория: @Model.Category</p>
+            <p>@Model.Description</p>
+            <p class="fs-4 fw-bold">@Model.Price руб.</p>
+            <span class="badge @(Model.IsAvailable ? "bg-success" : "bg-danger")">
+                @(Model.IsAvailable ? "В наличии" : "Нет в наличии")
+            </span>
+            <div class="mt-4">
+                <a asp-action="Index" class="btn btn-secondary">Назад к меню</a>
+            </div>
+        </div>
+    </div>
+</div>
