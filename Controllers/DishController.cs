@@ -62,5 +62,24 @@ namespace wt_lab4_4mvc_savostikova.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        // === НОВЫЕ МЕТОДЫ ДЛЯ УДАЛЕНИЯ ===
+        public IActionResult Delete(int id)
+        {
+            var dish = DishesData.Dishes.FirstOrDefault(d => d.Id == id);
+            if (dish == null) return NotFound();
+            return View(dish);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            var dish = DishesData.Dishes.FirstOrDefault(d => d.Id == id);
+            if (dish != null)
+            {
+                DishesData.Dishes.Remove(dish);
+            }
+            return RedirectToAction("Index");
+        }
     }
 }
